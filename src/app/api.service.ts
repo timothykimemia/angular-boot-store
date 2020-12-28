@@ -64,9 +64,13 @@ export class ApiService {
     // return this.httpClient.get(this.SERVER_URL + '/products').pipe(catchError(this.handleError));
 
     // Add safe, URL encoded _page and _limit parameters
-    return this.httpClient.get(this.SERVER_URL + '/products', {  params: new HttpParams({fromString: '_page=1&_limit=20'}), observe: 'response'}).pipe(retry(3), catchError(this.handleError), tap(res => {
-      console.log(res.headers.get('Link'));
-      this.parseLinkHeader(res.headers.get('Link'));
-    }));
+    return this.httpClient.get(this.SERVER_URL + '/products', {
+      params: new HttpParams({
+        fromString: '_page=1&_limit=20'}),
+        observe: 'response'}
+        ).pipe(retry(3), catchError(this.handleError), tap(res => {
+          console.log(res.headers.get('Link'));
+          this.parseLinkHeader(res.headers.get('Link'));
+        }));
   }
 }
