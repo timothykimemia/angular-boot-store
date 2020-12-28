@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 
 import { throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
@@ -46,10 +46,10 @@ export class ApiService {
       links[name] = url;
     });
 
-    this.first  = links.first;
-    this.last   = links.last;
-    this.prev   = links.prev;
-    this.next   = links.next;
+    this.first  = links["first"];
+    this.last   = links["last"];
+    this.prev   = links["prev"];
+    this.next   = links["next"];
   }
 
   public sendGetRequestToUrl(url: string) {
